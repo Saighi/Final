@@ -3,13 +3,11 @@ package Elements;
 import Elements.Pièces.Equipe;
 import Elements.Pièces.Piece;
 import Elements.Pièces.Pion;
-import Elements.Pièces.Reine;
+import Elements.Pièces.Dame;
 import Elements.Pièces.Roi;
 import Elements.Pièces.Tour;
 import Elements.Pièces.Fou;
 import Elements.Pièces.Cavalier;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Plateau {
     public Piece[][] cases;
@@ -25,7 +23,7 @@ public class Plateau {
         new Tour(Equipe.Blanc,0,0, this);
         new Cavalier(Equipe.Blanc,1,0, this);
         new Fou(Equipe.Blanc,2,0, this);
-        new Reine(Equipe.Blanc,3,0, this);
+        new Dame(Equipe.Blanc,3,0, this);
         Wking = new Roi(Equipe.Blanc,4,0, this);
         new Fou(Equipe.Blanc,5,0, this);
         new Cavalier(Equipe.Blanc,6,0, this);
@@ -46,7 +44,7 @@ public class Plateau {
         new Tour(Equipe.Noir,0,7, this);
         new Cavalier(Equipe.Noir,1,7, this);
         new Fou(Equipe.Noir,2,7, this);
-        new Reine(Equipe.Noir,3,7, this);
+        new Dame(Equipe.Noir,3,7, this);
         Bking = new Roi(Equipe.Noir,4,7, this);
         new Fou(Equipe.Noir,5,7, this);
         new Cavalier(Equipe.Noir,6,7, this);
@@ -75,20 +73,20 @@ public class Plateau {
 
     }
 
-    public boolean isWon(){
+    public Equipe isWon(){
 
         if(Wking.isCapturee()) {
 
             System.out.print("Les Noirs ont gagnées");
-            return true;
+            return Equipe.Noir;
         }
         else if(Bking.isCapturee()) {
 
             System.out.print("Les Blancs ont gagnées");
-            return true;
+            return Equipe.Blanc;
         }
 
-        return false;
+        return null;
     }
 
     public boolean checkCase(Piece p, int x, int y){
@@ -114,6 +112,7 @@ public class Plateau {
     }
 
     public Piece getCase(int x, int y) {
+        if(x==999 && y==999) return null;
         return this.cases[x][y];
     }
 

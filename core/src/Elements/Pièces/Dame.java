@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import Elements.Plateau;
 
-public class Reine extends Piece{
+public class Dame extends Piece{
 
 
-    public Reine(Equipe e, int x, int y , Plateau p) {
+    public Dame(Equipe e, int x, int y , Plateau p) {
         super(e, x,y,p);
     }
 
